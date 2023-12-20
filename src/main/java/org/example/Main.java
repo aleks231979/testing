@@ -3,6 +3,7 @@ package org.example;
 
 import homework1.shop.Product;
 import homework1.shop.Shop;
+import homework3.task3.User;
 
 import java.util.ArrayList;
 import java.util.List;

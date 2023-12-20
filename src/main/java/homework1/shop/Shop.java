@@ -48,36 +48,5 @@ public class Shop {
             }
         return productWithBigestCost;
     }
-
 }
 
-/**
- * public class ChatGroup implements Iterable<User> {
-    private List<User> userLists;
-
-    public ChatGroup() {
-        userLists = new ArrayList<>();
-    }
-    public void addUser(User user){
-        userLists.add(user);
-    }
-
-    @Override
-    public Iterator iterator() {
-        return new ChatGroupIterator();
-    }
-    class ChatGroupIterator implements Iterator<User>{
-        private int index;
-
-        @Override
-        public boolean hasNext() {
-            return index < userLists.size();
-        }
-
-        @Override
-        public User next() {
-            return userLists.get(index++);
-        }
-    }
-*
- */

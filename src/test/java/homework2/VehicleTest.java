@@ -1,30 +1,37 @@
 package homework2;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class VehicleTest {
+    private Car car;
+    private  Motorcycle moto;
+
+    @BeforeEach
+    void init() {
+        car = new Car("Audi", "Q8", 2020);
+        moto = new Motorcycle("Suzuki", "Q8", 2020);
+
+    }
 
     //Проверить, что экземпляр объекта Car также является экземпляром транспортного средства
     // (используя оператор instanceof).
     @Test
     void isTypeVehicle() {
-        Car car = new Car("Audi", "Q8", 2020);
         assertTrue(car instanceof Vehicle);
     }
 
     //Проверить, что объект Car создается с 4-мя колесами.
     @Test
     void has4Wheels() {
-        Car car = new Car("Audi", "Q8", 2020);
         assertEquals(4, car.getNumWheels());
     }
 
     //Проверить, что объект Motorcycle создается с 2-мя колесами.
     @Test
     void has2Wheels() {
-        Motorcycle moto = new Motorcycle("Suzuki", "Q8", 2020);
         assertEquals(2, moto.getNumWheels());
     }
 
@@ -32,7 +39,6 @@ class VehicleTest {
     // (используя метод testDrive()).
     @Test
     void speedInTestDriveCar() {
-        Car car = new Car("Audi", "Q8", 2020);
         car.testDrive();
         assertEquals(60, car.getSpeed());
     }
@@ -41,7 +47,6 @@ class VehicleTest {
     //(используя метод testDrive()).
     @Test
     void speedInTestDriveMoto() {
-        Motorcycle moto = new Motorcycle("Suzuki", "Q8", 2020);
         moto.testDrive();
         assertEquals(75, moto.getSpeed());
     }
@@ -50,7 +55,6 @@ class VehicleTest {
     //транспорта) машина останавливается (speed = 0)
     @Test
     void testSpeedInParkCar() {
-        Car car = new Car("Audi", "Q8", 2020);
         car.testDrive();
         car.park();
         assertEquals(0, car.getSpeed());
@@ -60,19 +64,19 @@ class VehicleTest {
     //транспорта) мотоцикл останавливается (speed = 0).
     @Test
     void testSpeedInParkMoto() {
-        Motorcycle moto = new Motorcycle("Suzuki", "Q8", 2020);
         moto.testDrive();
         moto.park();
         assertEquals(0, moto.getSpeed());
     }
-
-    //
-
     @Test
-    void testDrive() {
-    }
+    // При попытки вызвать метод testDrive() у несуществующего объекта корректно обрабатывается ошибка
+    // NullPointerException. Аналогично будет работать с классом Motorcycle и методом park()
+    // assertThrows(NullPointerException.class, () -> moto.park(),
+        //                "Can`t do park without moto initializing");
 
-    @Test
-    void park() {
+    void test() {
+        Car car = null;
+        assertThrows(NullPointerException.class, () -> car.testDrive(),
+                "Can`t do testDrive without car initializing");
     }
 }

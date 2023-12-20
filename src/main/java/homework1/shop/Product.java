@@ -15,12 +15,6 @@ public class Product{
 
     @Override
     public boolean equals(Object obj) {
-//        if (obj == this) {
-//            return true;
-//        }
-//        if (!(obj instanceof Product)) {
-//        return  false;
-//        }
         Product product = (Product) obj;
         return getTitle().equals(product.title) && getCost() == product.cost;
     }
@@ -32,8 +26,6 @@ public class Product{
                 ", title='" + title + '\'' +
                 '}';
     }
-
-
 
     public void setCost(int cost) {
         this.cost = cost;
